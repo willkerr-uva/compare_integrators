@@ -185,8 +185,15 @@ class HighPrecisionGaussInt:
         """
         
         ### complete code here ###
-    
-        return 0  # integral of function f
+        a_dec, b_dec = Decimal(str(a)), Decimal(str(b))
+        sum_val = Decimal(0)
+        c = (b_dec-a_dec)/Decimal(2)
+        midpoint = (b_dec + a_dec) / Decimal(2)
+        for i in range(len(self.weight)):
+            x = float(c*self.lroots[i]+midpoint)
+            f = Decimal(str(f(x)))
+            sum_val += self.weight[i]*f
+        return c*sum_val  # integral of function f
 
     
 # Example usage and testing
