@@ -191,8 +191,8 @@ class HighPrecisionGaussInt:
         midpoint = (b_dec + a_dec) / Decimal(2)
         for i in range(len(self.weight)):
             x = float(c*self.lroots[i]+midpoint)
-            f = Decimal(str(f(x)))
-            sum_val += self.weight[i]*f
+            f_val = Decimal(str(f(x)))
+            sum_val += self.weight[i]*f_val
         return c*sum_val  # integral of function f
 
     
