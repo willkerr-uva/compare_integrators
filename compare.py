@@ -1,4 +1,4 @@
-from gqconstant import HighPrecisionGaussInt
+from gqconstants import HighPrecisionGaussInt
 import numpy as np
 import matplotlib.pyplot as plt
 
