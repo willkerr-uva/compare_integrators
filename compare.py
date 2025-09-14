@@ -25,7 +25,7 @@ def gauss(f, a, b, N):
     return float(gq.integ(f, a, b))
 
 a, b = 0.0, 1.0
-val = 1-f(-1)
+val = 1-np.exp(-1)
 Ns = [2, 10, 20, 40, 80, 160, 320, 640, 1280]
 trap_err, simp_err, gauss_err = [], [], []
 
