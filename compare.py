@@ -22,7 +22,7 @@ def simp(f, a, b, N):
 #gauss
 def gauss(f, a, b, N):
     gq = HighPrecisionGaussInt(N)
-    return gq.integ(f, a, b)
+    return float(integ(f, a, b))
 
 a, b = 0.0, 1.0
 val = 1-f(-1)
