@@ -34,8 +34,8 @@ for N in Ns:
     s = simp(f, a, b, N)
     g = gauss(f, a, b, N)
     trap_err.append(abs((t-val)/val))
-    simp_err.append(abs((t-val)/val))
-    gauss_err.append(abs((t-val)/val))
+    simp_err.append(abs((s-val)/val))
+    gauss_err.append(abs((g-val)/val))
 
 #table
 print("N\tE_trap\tE_simp\tE_gauss")
