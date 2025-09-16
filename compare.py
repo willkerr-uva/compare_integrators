@@ -26,7 +26,7 @@ def gauss(f, a, b, N):
 
 a, b = 0.0, 1.0
 val = 1-np.exp(-1)
-Ns = [2, 10, 20, 40, 80, 160, 320, 640, 1280]
+Ns = [3, 11, 21, 41, 81, 161, 321, 641, 1281]
 trap_err, simp_err, gauss_err = [], [], []
 
 for N in Ns:
@@ -41,6 +41,32 @@ for N in Ns:
 print("N\tE_trap\tE_simp\tE_gauss")
 for i, N in enumerate(Ns):
     print(f"{N}\t{trap_err[i]:.3e}\t{simp_err[i]:.3e}\t{gauss_err[i]:.3e}")
+
+#slope of errors
+def slope(Ns, errs, label):
+    logN = np.log10(Ns)
+    logE = np.log10(errs)
+    m, b = np.polyfit(logN, logE, 1)  # linear fit
+    print(f"{label} slope ≈ {m:.2f}")
+    return m
+
+print()
+print("Slopes:")
+slope(Ns, trap_err, "Trapezoid")
+slope(Ns, simp_err, "Simpson")
+
+#decimal precision
+def digits(errs):
+    return [int(np.floor(-np.log10(e))) if e > 0 else 16 for e in errs]
+
+trap_digits = digits(trap_err)
+simp_digits = digits(simp_err)
+print()
+print("Number of digits of precision:")
+print("\nN\tTrapezoid\tSimpson")
+for i, N in enumerate(Ns):
+    print(f"{N}\t{trap_digits[i]}\t\t{simp_digits[i]}")
+
 
 #log plot
 plt.figure(figsize=(8,6))
